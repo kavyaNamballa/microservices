@@ -13,8 +13,8 @@ public class CurrencyExchangeController {
     private final Environment environment;
     private final CurrencyExchangeRepo currencyExchangeRepo;
 
-    @GetMapping("/currency-exchange/from/{usd}/to/{inr}")
-    public CurrencyExchange getExchangeValue(@PathVariable(name = "usd") String from, @PathVariable(name = "inr") String to) {
+    @GetMapping("/currency-exchange/from/{from}/to/{to}")
+    public CurrencyExchange getExchangeValue(@PathVariable String from, @PathVariable String to) {
         CurrencyExchange currencyExchange = currencyExchangeRepo.findByFromAndTo(from,to);
 //        CurrencyExchange currencyExchange = new CurrencyExchange(1000L,from,to, BigDecimal.valueOf(50));
         String port  = environment.getProperty("local.server.port");
